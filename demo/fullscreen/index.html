@@ -1,0 +1,90 @@
+
+<!doctype html>
+<html lang="en" id="base">
+<head>
+	<meta charset="UTF-8">
+	<title>SwipeView Full Screen Test (images from flickr)</title>
+	<style>
+	html {
+		height: 100%;
+	}
+	body{ 
+		-webkit-user-select:none;
+		height: 100%;
+		padding: 0;
+		margin: 0; 
+	}
+
+	.bg {
+		min-height: 100%;
+		background-repeat: no-repeat;
+		background-position: center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+
+	#wrapper {
+		height: 100%;
+		width: 100%;
+		min-width:320px;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="wrapper"></div>
+</body>
+
+<!-- include swipeview.js -->
+<script src="../../src/swipeview-min.js"></script>
+<script>
+var	carousel,
+	el,
+	i,
+	page,
+
+	// this is the key: The image URLs
+	slides = [
+		'http://farm4.staticflickr.com/3015/2941486784_acdf85459b_b.jpg',
+		'http://farm8.staticflickr.com/7077/7300159196_8f8c14049b_b.jpg',
+		'http://farm6.staticflickr.com/5446/7189851975_139908be4b_b.jpg',
+		'http://farm8.staticflickr.com/7234/7375094972_06c0933e91_b.jpg',
+		'http://farm8.staticflickr.com/7356/9661781823_e57543c25d_b.jpg'
+	];
+
+carousel = new SwipeView('#wrapper', {
+	numberOfPages: slides.length,
+	hastyPageFlip: true
+});
+
+// Load initial data
+for (i = 0; i < 3; i++) {
+	page = i == 0 ? slides.length - 1 : i - 1;
+
+	el = document.createElement('div');
+	// el.innerHTML = slides[page];
+	el.className = 'bg';
+	el.style.backgroundImage = 'url(' + slides[page] + ')';
+	carousel.masterPages[i].appendChild(el)
+}
+
+carousel.onFlip(function () {
+	var el,
+		upcoming,
+		i;
+
+	for (i = 0; i < 3; i++) {
+		upcoming = carousel.masterPages[i].dataset.upcomingPageIndex;
+
+		if (upcoming != carousel.masterPages[i].dataset.pageIndex) {
+			el = carousel.masterPages[i].querySelector('div');
+			el.className = 'bg';
+			el.style.backgroundImage = 'url(' + slides[upcoming] + ')';
+		}
+	}
+});
+
+</script>
+</html>

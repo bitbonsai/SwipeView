@@ -5,6 +5,8 @@ Virtually infinite loop-able horizontal carousel for desktop and mobile browsers
 
 Read more at [cubiq.org](http://cubiq.org/swipeview)
 
+FullScreen Demo: [http://bitbonsai.com/swipeview/fullscreen](http://bitbonsai.com/swipeview/fullscreen/)
+
 Gallery Demo: [http://cubiq.org/dropbox/SwipeView/demo/gallery](http://cubiq.org/dropbox/SwipeView/demo/gallery)
 
 eReader Demo: [http://cubiq.org/dropbox/SwipeView/demo/ereader](http://cubiq.org/dropbox/SwipeView/demo/ereader)
