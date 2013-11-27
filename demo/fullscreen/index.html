@@ -86,5 +86,19 @@ carousel.onFlip(function () {
 	}
 });
 
+// also get arrow keys...
+document.onkeydown = function() {
+    switch (window.event.keyCode) {
+        case 37:
+        case 38:
+            window.carousel.prev()
+            break;
+        case 39:
+        case 40:
+            window.carousel.next()
+            break;
+    }
+};
+
 </script>
 </html>
